@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "View_Code";
+}
+
+<h2>View_Code</h2>
+<h4>Index Page</h4>
+<br />
+<code>
+    &#64;model IEnumerable&lt;GoalTracker.Models.Task&gt;<br>
+
+    <br>&#64;{<br>
+    ViewBag.Title = "Index";<br>
+    }<br>
+
+    <br>
+    <br>&lt;h1&gt;Goals&lt;/h1&gt;<br>
+
+    <br>&lt;p&gt;<br>
+    &#64;Html.ActionLink("Create Goal", "Create")<br>
+    &lt;/p&gt;<br>
+    &lt;table class="table"&gt;<br>
+    &lt;tr&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.Title)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.EntryDate)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.CompletionDate)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.Difficulty)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.InsertUser)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.Type)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;<br>
+    &#64;Html.DisplayNameFor(model =&gt; model.Tag)<br>
+    &lt;/th&gt;<br>
+    &lt;th&gt;&lt;/th&gt;<br>
+    &lt;/tr&gt;<br>
+
+    <br>    &#64;foreach (var item in Model) {<br>
+    string cssClass = "success";<br>
+    if (item.CompletionDate == null)<br>
+    {<br>
+    cssClass = "danger";<br>
+    }<br>
+
+    <br>        &lt;tr class=&#64;cssClass&gt;<br>
+
+    <br>            &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.Title)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.EntryDate)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.CompletionDate)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.Difficulty)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.InsertUser)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.Type)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.DisplayFor(modelItem =&gt; item.Tag)<br>
+    &lt;/td&gt;<br>
+    &lt;td&gt;<br>
+    &#64;Html.ActionLink("Edit", "Edit", new { id=item.ID }) |<br>
+    &#64;Html.ActionLink("Details", "Details", new { id=item.ID })<br>
+    &lt;/td&gt;<br>
+    &lt;/tr&gt;<br>
+    }<br>
+
+    <br>&lt;/table&gt;<br>
+
+    <br>
+</code>
+<br />
+<h4>Create Page</h4>
+
+<code>
+    &#64;model GoalTracker.Models.Task
+    <br>
+
+
+    <br>&#64;{
+    <br>
+    ViewBag.Title = "Create";
+    <br>
+    }
+    <br>
+
+
+    <br>&lt;h2&gt;Create&lt;/h2&gt;
+    <br>
+
+
+    <br>&#64;using (Html.BeginForm())
+    <br>
+    {
+    <br>
+    &#64;Html.AntiForgeryToken()
+    <br>
+
+    <br>
+    &lt;div class="form-horizontal"&gt;
+    <br>
+    &lt;h4&gt;Task&lt;/h4&gt;
+    <br>
+    &lt;hr /&gt;
+    <br>
+    &#64;Html.ValidationSummary(true, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;div class="form-group"&gt;
+    <br>
+    &#64;Html.LabelFor(model =&gt; model.Title, htmlAttributes: new { &#64;class = "control-label col-md-2" })
+    <br>
+    &lt;div class="col-md-10"&gt;
+    <br>
+    &#64;Html.EditorFor(model =&gt; model.Title, new { htmlAttributes = new { &#64;class = "form-control" } })
+    <br>
+    &#64;Html.ValidationMessageFor(model =&gt; model.Title, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+
+
+    <br>        &lt;div class="form-group"&gt;
+    <br>
+    &#64;Html.LabelFor(model =&gt; model.EntryDate, htmlAttributes: new { &#64;class = "control-label col-md-2" })
+    <br>
+    &lt;div class="col-md-10"&gt;
+    <br>
+    &#64;Html.EditorFor(model =&gt; model.EntryDate, new { htmlAttributes = new { &#64;class = "form-control" } })
+    <br>
+    &#64;Html.ValidationMessageFor(model =&gt; model.EntryDate, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+
+
+    <br>
+
+    <br>        &lt;div class="form-group"&gt;
+    <br>
+    &#64;Html.LabelFor(model =&gt; model.Difficulty, htmlAttributes: new { &#64;class = "control-label col-md-2" })
+    <br>
+    &lt;div class="col-md-10"&gt;
+    <br>
+    &#64;Html.EditorFor(model =&gt; model.Difficulty, new { htmlAttributes = new { &#64;class = "form-control" } })
+    <br>
+    &#64;Html.ValidationMessageFor(model =&gt; model.Difficulty, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+
+
+    <br>        &lt;div class="form-group"&gt;
+    <br>
+    &#64;Html.LabelFor(model =&gt; model.InsertUser, htmlAttributes: new { &#64;class = "control-label col-md-2" })
+    <br>
+    &lt;div class="col-md-10"&gt;
+    <br>
+    &#64;Html.EditorFor(model =&gt; model.InsertUser, new { htmlAttributes = new { &#64;class = "form-control" } })
+    <br>
+    &#64;Html.ValidationMessageFor(model =&gt; model.InsertUser, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+
+
+    <br>        &lt;div class="form-group"&gt;
+    <br>
+    &#64;Html.LabelFor(model =&gt; model.Type, htmlAttributes: new { &#64;class = "control-label col-md-2" })
+    <br>
+    &lt;div class="col-md-10"&gt;
+    <br>
+    &#64;Html.DropDownList()
+    <br>
+    &#64;Html.EditorFor(model =&gt; model.Type, new { htmlAttributes = new { &#64;class = "form-control" } })
+    <br>
+    &#64;Html.ValidationMessageFor(model =&gt; model.Type, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+
+
+    <br>        &lt;div class="form-group"&gt;
+    <br>
+    &#64;Html.LabelFor(model =&gt; model.Tag, htmlAttributes: new { &#64;class = "control-label col-md-2" })
+    <br>
+    &lt;div class="col-md-10"&gt;
+    <br>
+    &#64;Html.EditorFor(model =&gt; model.Tag, new { htmlAttributes = new { &#64;class = "form-control" } })
+    <br>
+    &#64;Html.ValidationMessageFor(model =&gt; model.Tag, "", new { &#64;class = "text-danger" })
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+
+
+    <br>        &lt;div class="form-group"&gt;
+    <br>
+    &lt;div class="col-md-offset-2 col-md-10"&gt;
+    <br>
+    &lt;input type="submit" value="Create" class="btn btn-default" /&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+    &lt;/div&gt;
+    <br>
+    }
+    <br>
+
+
+    <br>&lt;div&gt;
+    <br>
+    &#64;Html.ActionLink("Back to List", "Index")
+    <br>
+    &lt;/div&gt;
+    <br>
+
+</code>

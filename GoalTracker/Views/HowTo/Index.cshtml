@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>How To</h2>
+<h4>Welcome to the How To Section of the Goal Tracker Site</h4>
+<h4>Here you will find an in depth explanation of how this application was built.</h4>
+
+<div class="panel-primary">
+    <div class="panel-heading">MVC</div>
+    <div class="panel-body">
+        <p>
+            This site was created using ASP.NET MVC 5 Framework with a data first approach.
+            <br />
+            <div class="list-group">
+                <div class="list-group-item"> @Html.ActionLink("Model Code", "Model_Code", "HowTo") </div>
+                <div class="list-group-item">@Html.ActionLink("Controller Code", "Controller_Code", "HowTo")</div>
+                <div class="list-group-item">@Html.ActionLink("View Code", "View_Code", "HowTo")</div>
+
+            </div>
+        </p>
+    </div>
+</div>
+<div class="panel-primary">
+    <div class="panel-heading">SQL</div>
+    <div class="panel-body">
+        <p>
+            This site was created with a pre-existing database called Goal Tracker
+            <br />
+            <div class="list-group">
+                <div class="list-group-item">@Html.ActionLink("SQl Server Set Up", "SQL_Server_Set_Up", "HowTo")</div>
+                <div class="list-group-item">@Html.ActionLink("Table Creation", "Table_Creation", "HowTo")</div>
+                <div class="list-group-item">@Html.ActionLink("Link Database To Solution", "Link_Database_To_Solution", "HowTo")</div>
+            </div>
+        </p>
+    </div>
+</div>
+

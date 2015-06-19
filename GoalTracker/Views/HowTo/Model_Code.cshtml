@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Model_Code";
+}
+
+<h2>Model_Code</h2>
+<h3>Task.cs Class</h3>
+<code>
+    using System;<br>
+    using System.Collections.Generic;<br>
+    using System.ComponentModel.DataAnnotations;<br>
+    using System.ComponentModel.DataAnnotations.Schema;<br>
+    using System.Linq;<br>
+    using System.Web;<br>
+
+    <br>namespace GoalTracker.Models<br>
+        {<br>
+            [Table("dbo.Tasks")]<br>
+            public class Task<br>
+            {<br>
+                public int ID { get; set; }<br>
+                public string Title { get; set; }<br>
+                [Display(Name = "Entry Date")]<br>
+                [DataType(DataType.Date)]<br>
+                //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]<br>
+                public DateTime EntryDate { get; set; }<br>
+                [Display(Name = "Completion Date")]<br>
+                [DataType(DataType.Date)]<br>
+                public DateTime ? CompletionDate { get; set; }<br>
+                public int ? Difficulty { get; set; }<br>
+                public string InsertUser { get; set; }<br>
+                public string Type { get; set; }<br>
+                public string Tag { get; set; }<br>
+        }<br>
+    }<br>
+</code>
+<br />
+<h3>TaskContext.cs Class</h3>
+<br />
+<code>
+    using System;<br>
+    using System.Collections.Generic;<br>
+    using System.Data.Entity;<br>
+    using System.Linq;<br>
+    using System.Web;<br>
+
+    <br>namespace GoalTracker.Models<br>
+    {<br>
+    public class TaskContext : DbContext<br>
+    {<br>
+    public DbSet<task>
+        Tasks { get; set; }<br>
+        }<br>
+        }<br>
+</code>

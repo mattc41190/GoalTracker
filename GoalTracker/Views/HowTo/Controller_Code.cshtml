@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Controller_Code";
+}
+
+<h2>Controller_Code</h2>
+<br />
+<h4>TaskController. cs Class</h4>
+<code>
+    using GoalTracker.Models;<br>
+    using System;<br>
+    using System.Collections.Generic;<br>
+    using System.Data.Entity;<br>
+    using System.Linq;<br>
+    using System.Web;<br>
+    using System.Web.Mvc;<br>
+
+    <br>namespace GoalTracker.Controllers<br>
+    {<br>
+    public class TaskController : Controller<br>
+    {<br>
+    private TaskContext db = new TaskContext();<br>
+    <br>
+    // GET: All Task<br>
+    public ActionResult Index()<br>
+    {<br>
+    TaskContext taskContext = new TaskContext();<br>
+    DbSet<task>
+        tasks = taskContext.Tasks;<br>
+
+        <br>            return View(tasks);<br>
+        }<br>
+        <br>
+        // GET: Task Details<br>
+        public ActionResult Details(int id = 1)<br>
+        {<br>
+        TaskContext taskContext = new TaskContext();<br>
+        Task task = taskContext.Tasks.Single(tsk => tsk.ID == id);<br>
+
+        <br>            return View(task);<br>
+        }<br>
+
+        <br>        // GET: Create page<br>
+        [HttpGet]<br>
+        public ActionResult Create()<br>
+        {<br>
+        return View();<br>
+        }<br>
+
+        <br>        //POST: Create page<br>
+        [HttpPost]<br>
+        [ValidateAntiForgeryToken]<br>
+        public ActionResult Create([Bind(Include = "ID,Title,EntryDate,CompletionDate,Difficulty,InsertUser,Type,Tag")] Task task)<br>
+        {<br>
+        if (ModelState.IsValid)<br>
+        {<br>
+        db.Tasks.Add(task);<br>
+        db.SaveChanges();<br>
+        return RedirectToAction("Index");<br>
+        }<br>
+        return View(task);<br>
+        }<br>
+
+        <br>        // GET: Edit Page<br>
+        [HttpGet]<br>
+        public ActionResult Edit(int id = 1)<br>
+        {<br>
+        TaskContext taskContext = new TaskContext();<br>
+        Task task = taskContext.Tasks.Single(tsk => tsk.ID == id);<br>
+
+        <br>            return View(task);<br>
+        }<br>
+
+        <br>        // POST: Edit Page<br>
+        [HttpPost]<br>
+        [ValidateAntiForgeryToken]<br>
+        public ActionResult Edit([Bind(Include = "ID,Title,EntryDate,CompletionDate,Difficulty,InsertUser,Type,Tag")] Task task)<br>
+        {<br>
+        if (ModelState.IsValid)<br>
+        {<br>
+        db.Entry(task).State = EntityState.Modified;<br>
+        db.SaveChanges();<br>
+        return RedirectToAction("Index");<br>
+        }<br>
+        return View(task);<br>
+        }<br>
+        }<br>
+        }<br>
+</code>
+
